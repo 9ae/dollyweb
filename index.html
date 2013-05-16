@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<script type="text/javascript" src="../lib/energize/glMatrix-0.9.2.min.js"></script> 
+		<script type="text/javascript" src="../lib/energize/EnergizeGL.Alpha.8.33.min.js"></script>
+		<script type="text/javascript" src="setup.js"></script>
+		<script type="text/javascript" src="arcball.js"></script>
+		<script type="text/javascript" src="energy.js"></script>
+		<script type="text/javascript" src="pagecontrols.js"></script>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>using Energize Engine</title>
+	</head>
+	<body>
+	<center>
+	<table width="88%"><tr><td colspan=2 id="header">
+	<a href="#" onClick="show('program')">Controls</a>
+	<a href="#" onClick="show('about')">About</a>
+	<a href="#" onClick="show('release')">Release Notes</a>
+	<a href="#" onClick="show('credits')">Credits</a>
+	<a href="http://github.com/codebunny/dollyweb">Source Code</a>
+	</td></tr>
+	<tr>
+	<td id="infoCell" width="*"></td>
+	<td id="canvasCell" width="500px">
+	<canvas id="appcanvas" width="500" height="500"></canvas></td>
+	</tr>
+	<tr></tr><td colspan="2" id="footer">
+		Copyright 2011 <a href="mailto:studio{at}aliceq.com">Alice Q. Wong</a>
+		<br /> All Rights Reserved
+	</td></tr>
+	</table>
+	</center>
+	<div id="applog"></div>
+			<div id="program" style="display:none">
+<img src="keymodel.png" align="right">
+<p>Info Notes: To load content make sure your <a href="http://www.khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" target="_blank">browser supports WebGL</a>.
+Also check support table for this page in the <a href="#" onclick="show('about');">About page</a>. This project is in the works. 
+I would very much appreciate if you report any bugs or problems you have found using this script. Thank you.</p>
+
+		<p>	<u>Keyboard Controls</u><br />
+			Rotate about x-axis: [&uarr;]  [&darr;] <br />
+			Rotate about y-axis: [&larr;]  [&rarr;] <br />
+			Rotate about z-axis: [A]  [S] <br />
+			Zoom in/out: [Z]  [X]<br />
+			Release for any selection: [SPACE]<BR />
+<i>The model on the right, indicates which keys will activate which joints</i>
+			</p>
+			
+			
+<p><u>Mouse Controls</u> Click on the part you want to move, and drag [keep mouse button pressed] your mouse about to rotate the joints. 
+This movement function is still slightly shakey and needs work. I recommend using the keys to rotate joitns for now.</p>
+			
+		<!--	<input type="button" value="Contour Mode" onclick="contourMode()"><br /> -->
+			<input type="checkbox" value="0" name="shAxis"> Show Axis<br />
+			<input type="checkbox" value="0" name="Constraints" onchange="toggleConst();"> Use Constraints<br />
+		</div>
+		<div id="about" style="display:none">
+		<!--	<p><b>vMannequin</b> is my undergraduate honors project. Faculty Advisor of this project is
+			Dr. Lori Scarlatos of Department of Technology & Society. 
+			The goal of this project is to create an easily accessible virtual drawing mannequin.
+			At first this project was implemented in C++ using the OpenGL library. But my original intention was to make a web application, however at that time 3D render on the web was poorly standardize as well as difficult to deploy. A solution came up in a timely manner, Khronos Group was finally establishing more standard features for WebGL. This seemed exactly like the type of solution I was looking for. So here it is your very own drawing mannequin at the click of a mouse. 
+			</p>
+			
+			<p><b>Alice</b> (that's me) 
+			graduated in 2010 from Stony Brook University with Bachelors of Science in Applied Mathematics and Computer Science.
+			To learn more about me visit my <a href="http://log.aliceq.com">portfolio website</a>
+			</p>
+			-->
+			<b>Browser + Operating Systems Support</b> latest tested 9 Jan 2011<br />
+			<table width="300px" style="border: 1px solid #AEAEAE;">
+				<tr><td>OS/Browser</td>
+				<td><u>Chrome/Chromium</u></td>
+				<td><u>Firefox/Minefield</u></td></tr>
+				<tr><td><i>Linux</i></td>
+				<td>Works but with glitches</td>
+				<td>Works</td></tr>
+				<tr><td><i>Windows</i></td>
+				<td>Works</td>
+				<td>Works</td></tr>
+			</table>
+			
+		</div>
+		<div id="credits" style="display:none">
+			<p>Framework: <a href="http://energize.cc" target="_blank">EnergizeGL</a><br />
+			Model: <a href="http://sketchup.google.com/3dwarehouse/search?uq=18231368135315537600&styp=c&scoring=m" target="_blank">ArqDirk</a>
+			</p>
+			
+		</div>
+		<div id="release" style="display:none">
+			<p>07.01.2011 - <b>Implemented:</b><br />
+			 Keyboard Control Functions<br />
+			Limb Selection (Picking)<br />
+			<b>To Implement:</b><br />
+			Lighting/Show Normals<br />
+			Mouse Control Functions<br />
+			Inverse Kinematics<br />
+			Export to Image</p>
+			
+			<p>Currently this project is on hiatus. The library (EnergizeGL) used is no longer being supported.
+			I started porting my code to Three.js. 
+			Hopefully I will get the chance to get around to it sometime soon.
+			</p>
+		</div>
+		
+		<div id="report" style="display:none">
+			<p>If you noticed any issues or bugs please report them by filling out this form. Thank you
+			for your cooperation in helping making this software better. The * fields are required.</p>
+			
+			<form action="" enctype="multipart/form-data" method="POST" target="_blank">
+				<input type="hidden" name="sendtoemail" value="studio@aliceq.com">
+				<input type="hidden" name="subject" value="vMannequin Report">
+				<input type="text" name="senderName" value="name" onfocus="clearField(this)"> 
+				<input type="text" name="mailform" value="e-mail" onfocus="clearField(this)"><br />
+				<textarea name="message" cols="40" rows="7" onfocus="clearField(this)">*Message* [REQUIRED]</textarea><br />
+			<input type="submit" value="Submit"></form>
+		</div>
+	
+	<script type="text/javascript">
+		StartEnergizeGL('appcanvas', '', 'fillscreen');
+		show('program');
+		var can = document.getElementById('appcanvas');
+		can.addEventListener("MozTouchDown",touchDown, false);
+		can.addEventListener("MozTouchMove", touchMove, false);
+		can.addEventListener("MozTouchUp", function(event) { 
+		//fingers.splice(event.streamId-1,1); 
+		delete fingers[event.streamId]; 
+		armMove = null;}, false);
+	</script>
+	</body>
+</html>

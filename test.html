@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<script type="text/javascript" src="../lib/energize/glMatrix-0.9.2.min.js"></script> 
+		<script type="text/javascript" src="../lib/energize/EnergizeGL.Alpha.8.33.min.js"></script>
+		<script type="text/javascript">
+		/*	
+			function setup(){
+			//	startLoading();
+				usePointLight();
+			setPointPosition(0, 0, -40);
+			setPointColor(1);
+				usePicking();
+			}
+			
+			function draw(){
+     translate(0,0,-10);
+	 startPickables();
+    translate(-4, 0, 0);
+    setColor(0.8, 0, 0.5);
+        sphere();
+ 
+    translate(4, 0, 0);
+	setColor(0.8, 0, 0.5);
+        cube();
+   	
+ 
+    translate(4, 0, 0);
+    setColor(0.8);
+        pyramid();
+     endPickables();
+			}
+			
+	function picked(){
+			console.log(lastPicked);
+	}
+			*/
+			
+			function setup() {
+    loadTexture('myTexture', 'http://energize.cc/public/maps/concrete.jpg');
+     
+    startLoading();
+     
+    startMesh('cubes');
+        for(var i = 0; i < 100; i++) {
+            var height = random(20);
+            cube(random(-30, 30), -(height/2), random(-30, 30), random(20), height, random(20));
+        }
+    endMesh();
+     
+    usePostProcessing();
+     
+    addPostProcessingList('myFilterList0', [NO_FILTER]);
+     
+    addPostProcessingList('myFilterList1', [GAUSSIAN_BLUR]);
+    addPostProcessingList('myFilterList2', [GAUSSIAN_BLUR, GAUSSIAN_BLUR, GAUSSIAN_BLUR]);
+     
+    addPostProcessingList('myFilterList3', [SMOOTHING, EDGE_DETECTION]);
+     
+    usePostProcessingList('myFilterList0');
+}
+ 
+function draw() {
+    translate(0, 0, -60);
+    rotateX(10);
+    rotateY(frame/200);
+        useTexture('myTexture');
+            mesh('cubes', TRIANGLES);
+        noColor();
+}
+ 
+var currentFilterList = 0;
+function keyDown() {
+    if(currentFilterList == 3) currentFilterList = -1;
+    currentFilterList++;
+     
+    usePostProcessingList('myFilterList'+currentFilterList);
+}
+		</script>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>using Energize Engine</title>
+		
+	</head>
+	<body>
+		<canvas id="appcanvas" width="500" height="500"></canvas> 
+	<div id="applog"></div> 
+	
+	<script type="text/javascript">
+		StartEnergizeGL('appcanvas', '', 'applog');
+	</script>
+	</body>
+</html>

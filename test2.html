@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>EnergizeGL - Simple Example</title>
+
+		<script type="text/javascript" src="../lib/energize/glMatrix-0.9.2.min.js"></script>
+		<script type="text/javascript" src="../lib/energize/EnergizeGL.Alpha.8.33.min.js"></script>
+		<script type="text/javascript" src="arcball.js"></script>
+	</head>
+
+	<style>
+		body { margin: 0px; padding: 0px; }
+	</style>
+
+	<script type="text/javascript">
+		function setup() {
+		setPointPosition(0,0,0);
+		setPointColor(1);
+		usePointLight();
+		
+		loadObjModel('torso','models/newtorso.obj');
+			setBackgroundColor(0);
+			startLoading();
+	//usePicking();
+		}
+var rotM =[0,0,0,0];
+var fm = false;
+var sm = false;
+var fmx = -10;
+var fmz = 0;
+var smx = 20;
+var smz = 0;
+		function draw() {
+			translate(0, 0, -15);
+		pushMatrix();
+     setColor(0.5, 0.4, 0);
+                pushMatrix();
+                //    translate(fmx, 0, fmz);
+				rotate(rotM[0],rotM[1],rotM[2],rotM[3]);
+				pyramid();
+			//	mesh('torso',LINES);
+				//cube();
+               // mesh('cube',LINES);
+
+     
+   /*         if(sm) setColor(0, 1, 0);
+                pushMatrix();
+                    translate(smx, 0, smz);
+                   sphere();
+                popMatrix(); */
+popMatrix();
+          
+		popMatrix();
+		}
+
+function mouseDrag() {
+var nr = arcball();
+for(var i=0; i<3; i++){
+rotM[i]=nr[i]; };
+rotM[i]+=nr[i];
+console.log(rotM);
+//rotM[3]+=nr[3];
+ /*   if(lastPicked == 'cube') {
+        fmx += mouseY-lastMouseY;
+        fmz += mouseX-lastMouseX;
+    }
+    if(lastPicked == 'sphere') {
+        smx += mouseY-lastMouseY;
+        smz += mouseX-lastMouseX;
+    }  */
+}
+ /*
+function picked() {
+    if(lastPicked == 'firstMesh') fm = true;
+    if(lastPicked == 'secondMesh') sm = true;
+}
+*/
+		StartEnergizeGL('appcanvas', '', 'applog');
+		
+		// Uncomment for fillscreen with no logs
+		//StartEnergizeGL('appcanvas', 'fillscreen');
+	</script>
+
+<body>
+	<canvas id="appcanvas" width="500" height="500"></canvas>
+	<div id="applog">EnergizeGL is not running!<br>Do you have a webgl enabled browser?</div>
+</body>
+</html>

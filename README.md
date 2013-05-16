@@ -1,0 +1,1 @@
+Source code for <a href="http://tux.valour.me/vm">Virtual Mannequin</a>
