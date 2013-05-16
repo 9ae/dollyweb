@@ -8,7 +8,6 @@
 *.ln
 *.log
 *.o
-*.obj
 *.olb
 *.old
 *.orig
