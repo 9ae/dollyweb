@@ -1,6 +1,5 @@
-Virtual Drawing Mannequin
-
-===
+Virtual Drawing Mannequin (WebGL)
+======
 
 1. Mission Statement: To create an easily accessible virtual drawing mannequin web application. This was done in WebGL and using the EnergizeGL library. The original project was prototyped in C++. 
 
