@@ -1,1 +1,11 @@
-Source code for <a href="http://tux.valour.me/vm">Virtual Mannequin</a>
+Virtual Drawing Mannequin
+
+===
+
+1. Mission Statement: To create an easily accessible virtual drawing mannequin web application. This was done in WebGL and using the EnergizeGL library. The original project was prototyped in C++. 
+
+2. C++ Project source code: <a href="https://github.com/codebunny/dollyc">/dollyc</a>
+
+3. <a href="http://www.tux.valour.me/vm">WebGL Demo</a>
+
+4. Baseline Date: December 2010.
